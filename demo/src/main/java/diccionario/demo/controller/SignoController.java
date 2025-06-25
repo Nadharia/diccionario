@@ -1,4 +1,4 @@
-package diccionario.demo.repository;
+package diccionario.demo.controller;
 
 import java.util.List;
 
