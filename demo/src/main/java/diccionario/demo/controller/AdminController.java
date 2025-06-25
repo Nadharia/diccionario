@@ -16,14 +16,14 @@ import diccionario.demo.services.IUsuarioService;
 
 
 @RestController
-@RequestMapping()
+@RequestMapping("/admin")
 @CrossOrigin
 public class AdminController {
 
 @Autowired
 IUsuarioService iService;
 
-@PreAuthorize("hasRole('ADMIN')")
+@PreAuthorize("hasRole('USER')")
 @GetMapping("/obtenerusuarios")
 public ResponseEntity<?> obtenerTodosLosUsuarios(){
     List<Usuario> listaUsuarios = iService.obtenerUsuarios();

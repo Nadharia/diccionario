@@ -26,6 +26,6 @@ public class Signo {
     private String letra;
 
     
-    private String videoUrl;
+    private String ImagenUrl;
     private LocalDateTime fechaAlta;
 }

@@ -12,7 +12,7 @@ public class SignoDTO {
     private String letra;
 
     private String imagenUrl;
-    private String videoUrl;
+   
     
     
 }

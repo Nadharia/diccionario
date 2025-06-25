@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import diccionario.demo.config.JwtUtil;
 import diccionario.demo.dto.AuthRequest;
 import diccionario.demo.entity.Usuario;
+import diccionario.demo.entity.enums.Rol;
 import diccionario.demo.repository.UsuarioRepository;
 
 @RestController
@@ -51,6 +52,7 @@ public class AuthController {
         Usuario nuevo = new Usuario();
         nuevo.setUsername(request.getUsername());
         nuevo.setPassword(passwordEncoder.encode(request.getPassword()));
+        nuevo.setRol(Rol.USER);
         usuarioRepository.save(nuevo);
         return ResponseEntity.ok("Usuario registrado");
     }
