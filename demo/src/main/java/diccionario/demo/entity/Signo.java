@@ -1,7 +1,9 @@
 package diccionario.demo.entity;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,7 +27,11 @@ public class Signo {
     private String categoria;
     private String letra;
 
-    
-    private String ImagenUrl;
+    @Nullable
+    private List<String> urls;
     private LocalDateTime fechaAlta;
+
+
+
+    
 }
