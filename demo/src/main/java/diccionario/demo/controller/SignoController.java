@@ -26,8 +26,8 @@ public class SignoController {
     private ISignoService service;
 
     @GetMapping
-    public List<Signo> buscar(@RequestParam(required = false) String letra,@RequestParam(required = false) String query) {
-        return service.buscar(letra, query);
+    public List<Signo> buscar(@RequestParam(required = false) String query) {
+        return service.buscarPorQuery(query);
     }
 
     @GetMapping("/{id}")

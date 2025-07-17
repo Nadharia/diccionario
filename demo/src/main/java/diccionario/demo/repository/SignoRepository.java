@@ -11,8 +11,6 @@ import diccionario.demo.entity.Signo;
 
 public interface SignoRepository extends JpaRepository<Signo,Long>{
 
-    List<Signo> findByLetra(String letra);
-
-    List<Signo> findByPalabraContainingIgnoreCase(String palabra);
+    List<Signo> findByPalabraContainingIgnoreCase(String query);
 
 }

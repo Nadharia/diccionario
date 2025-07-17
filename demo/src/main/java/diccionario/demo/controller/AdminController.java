@@ -6,7 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,11 +28,11 @@ import diccionario.demo.services.IUsuarioService;
 public class AdminController {
 
 @Autowired
-IUsuarioService iService;
+private IUsuarioService iService;
 @Autowired
-BCryptPasswordEncoder passwordEncoder;
+private PasswordEncoder passwordEncoder;
 @Autowired
-UsuarioRepository usuarioRepository;
+private UsuarioRepository usuarioRepository;
 
 @PreAuthorize("hasRole('ADMIN')")
 @GetMapping("/obtenerusuarios")

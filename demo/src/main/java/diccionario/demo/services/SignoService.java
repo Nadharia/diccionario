@@ -17,12 +17,7 @@ public class SignoService implements ISignoService {
     @Autowired
     private SignoRepository repository;
 
-    @Override
-    public List<Signo> buscar(String letra, String query) {
-        if (letra != null) return repository.findByLetra(letra.toUpperCase());
-        if (query != null) return repository.findByPalabraContainingIgnoreCase(query);
-        return repository.findAll();
-    }
+   
 
     @Override
     public Optional<Signo> buscarPorId(Long id) {
@@ -30,26 +25,36 @@ public class SignoService implements ISignoService {
     }
 
     @Override
-    public String guardar(SignoDTO s) {
-        repository.save(DtotoEntity(s));
-        return "Guardado con éxito";
+public String guardar(SignoDTO s) {
+    repository.save(dtoToEntity(s));
+    return "Guardado con éxito";
+}
+
+public Signo dtoToEntity(SignoDTO s) {
+    Signo signo = new Signo();
+    signo.setPalabra(s.getPalabra());
+    signo.setCategoria(s.getCategoria());
+    signo.setDefinicion(s.getDefinicion());
+    signo.setFechaAlta(LocalDateTime.now());
+    signo.setLetra(s.getLetra());
+    signo.setUrls(s.getUrls());
+    return signo;
+}
+
+
+
+@Override
+public List<Signo> buscarPorQuery(String query) {
+    
+    if (query != null && !query.isEmpty()) {
+        return repository.findByPalabraContainingIgnoreCase(query);
     }
-    
-    public Signo DtotoEntity(SignoDTO s){
-        Signo signo=new Signo();
-        signo.setCategoria(s.getCategoria());
-        signo.setDefinicion(s.getDefinicion());
-        signo.setFechaAlta(LocalDateTime.now());
-        signo.setLetra(s.getLetra());
-        signo.setUrls(s.getUrls());
-        return signo;
-    
-    }
+    return repository.findAll();
+}
 
-    
-
-
-
-    
     
 }
+
+
+    
+    
