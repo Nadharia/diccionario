@@ -32,14 +32,15 @@ public class SignoController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Signo> obtener(@PathVariable Long id) {
+        System.out.println("busco signo con un id");
         return service.buscarPorId(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
-        
 
     @PostMapping
     public ResponseEntity<String> guardar(@RequestBody SignoDTO dto) {
+        System.out.println("entro y guardo?");
         return ResponseEntity.ok(service.guardar(dto));
     }
-}  
+}
